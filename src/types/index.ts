@@ -4,26 +4,39 @@ export interface Product {
     price: string | number
 }
 
-export enum Fields {
-    CURRENT_PAGE = 'current_page',
-    TOTAL_COUNT = 'total_count',
-    PREVIOUS_PAGE_URL = 'previous_page_url',
-    NEXT_PAGE_URL = 'next_page_url',
-    PRODUCTS = 'products'
-
-}
-
 export interface ProductsData {
     current_page: number,
     total_count: number,
-    previous_page_url: string,
-    next_page_url: string,
+    previous_page_url: string | boolean,
+    next_page_url: string | boolean,
     products: Product[]
 }
 
 export interface RequestParams {
     sort_field: string,
     sort_direction: string,
-    search: string,
-    page: number
+    page: number,
+    search?: string,
+}
+
+export type Option = {
+    id: string,
+    name: string
+    value: string | number
+}
+
+export type SearchField = {
+    name: string,
+    placeholder: string
+    value: string
+}
+
+export type SortByFieldSelect = {
+    name: string,
+    options: Option[]
+}
+
+export type SortByDirectionSelect = {
+    name: string,
+    options: Option[]
 }
